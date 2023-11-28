@@ -45,7 +45,7 @@ public class UserController {
 		String secretKey = "mySecretKey";
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils
 				.commaSeparatedStringToAuthorityList("ROLE_USER");
-		
+	
 		String token = Jwts
 				.builder()
 				.setId("auth-vivelibre")
@@ -58,8 +58,10 @@ public class UserController {
 				.setExpiration(new Date(System.currentTimeMillis() + 600000))
 				.signWith(SignatureAlgorithm.HS512,
 						secretKey.getBytes()).compact();
-
+		
+		
 		return "Bearer " + token;
+		
+	
 	}
-
 }
